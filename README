@@ -2,7 +2,7 @@ Simple program to control the NXP SC16IS752 dual UART with I2C/SPI interface
 
 This program:
 - Uses the I2C interface
-= Registers an interrupt handler to listen for interrupts from the device
+- Registers an interrupt handler to listen for interrupts from the device
 - Soft resets the device
 - Initialises the device at adress 0x48 (A0 and A1 pulled to VDD)
 - Blinks GPIOs 0 and 1
