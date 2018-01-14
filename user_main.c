@@ -348,9 +348,9 @@ void ICACHE_FLASH_ATTR init_device()
   // Set special registers
   rc = set_reg(SC16IS752_ADDR, "LCR", 0, 1, 0x03, 0b10000011, FALSE);  // enable special register set
   if (rc == FALSE) {orc = FALSE;}
-  rc = set_reg(SC16IS752_ADDR, "DLL", 0, 1, 0x00, 48, FALSE);  // 2400 baud
+  rc = set_reg(SC16IS752_ADDR, "DLL", 0, 1, 0x00, 48, FALSE);  // 2400 baud assuming 1.8432MHz crystal
   if (rc == FALSE) {orc = FALSE;}
-  rc = set_reg(SC16IS752_ADDR, "DLH", 0, 1, 0x01, 0, FALSE);   // 2400 baud
+  rc = set_reg(SC16IS752_ADDR, "DLH", 0, 1, 0x01, 0, FALSE);   // 2400 baud assuming 1.8432MHz crystal
   if (rc == FALSE) {orc = FALSE;}
   rc = set_reg(SC16IS752_ADDR, "LCR", 0, 1, 0x03, 0b00000011, FALSE);  // disable special register set
   if (rc == FALSE) {orc = FALSE;}
