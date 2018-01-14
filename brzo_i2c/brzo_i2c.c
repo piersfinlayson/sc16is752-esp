@@ -48,7 +48,7 @@ extern void ets_isr_unmask(unsigned intr); // missing definition
 // Global variables
 brzo_i2c_info i2c_info;
 
-void ICACHE_RAM_ATTR brzo_i2c_write_info(uint8_t *data, uint32_t no_of_bytes, bool repeated_start, brzo_i2c_info *info)
+void ICACHE_FLASH_ATTR brzo_i2c_write_info(uint8_t *data, uint32_t no_of_bytes, bool repeated_start, brzo_i2c_info *info)
 {
 	// Pointer to Data Buffer, Number of Bytes to Send from Data Buffer
 	// Returns 0 or Error encoded as follows
@@ -359,7 +359,7 @@ void ICACHE_FLASH_ATTR brzo_i2c_write(uint8_t *data, uint32_t no_of_bytes, bool 
 	return;
 }
 
-void ICACHE_RAM_ATTR brzo_i2c_read_info(uint8_t *data, uint32_t nr_of_bytes, bool repeated_start, brzo_i2c_info *info)
+void ICACHE_FLASH_ATTR brzo_i2c_read_info(uint8_t *data, uint32_t nr_of_bytes, bool repeated_start, brzo_i2c_info *info)
 {
 	// Pointer to Data Buffer, Number of Bytes to Read from Data Buffer
 	// Set i2c_error as follows
@@ -736,14 +736,14 @@ void ICACHE_RAM_ATTR brzo_i2c_read_info(uint8_t *data, uint32_t nr_of_bytes, boo
 	return;
 }
 
-void ICACHE_RAM_ATTR brzo_i2c_read(uint8_t *data, uint32_t nr_of_bytes, bool repeated_start)
+void ICACHE_FLASH_ATTR brzo_i2c_read(uint8_t *data, uint32_t nr_of_bytes, bool repeated_start)
 {
 	brzo_i2c_read_info(data, nr_of_bytes, repeated_start, &i2c_info);
 
 	return;
 }
 
-void ICACHE_RAM_ATTR brzo_i2c_ACK_polling_info(uint16_t ACK_polling_time_out_usec, brzo_i2c_info *info)
+void ICACHE_FLASH_ATTR brzo_i2c_ACK_polling_info(uint16_t ACK_polling_time_out_usec, brzo_i2c_info *info)
 {
 	// Timeout for ACK polling in usec
 	// Returns 0 or Error encoded as follows
@@ -975,14 +975,14 @@ void ICACHE_RAM_ATTR brzo_i2c_ACK_polling_info(uint16_t ACK_polling_time_out_use
 	return;
 }
 
-void ICACHE_RAM_ATTR brzo_i2c_ACK_polling(uint16_t ACK_polling_time_out_usec)
+void ICACHE_FLASH_ATTR brzo_i2c_ACK_polling(uint16_t ACK_polling_time_out_usec)
 {
 	brzo_i2c_ACK_polling_info(ACK_polling_time_out_usec, &i2c_info);
 
 	return;
 }
 
-void ICACHE_RAM_ATTR brzo_i2c_start_transaction_info(uint8_t slave_address, uint16_t SCL_frequency_KHz, brzo_i2c_info *info)
+void ICACHE_FLASH_ATTR brzo_i2c_start_transaction_info(uint8_t slave_address, uint16_t SCL_frequency_KHz, brzo_i2c_info *info)
 {
 	// 7 Bit Slave Address; SCL Frequency in Steps of 100 KHz, range: 100 -- 1000 KHz
 
@@ -1016,12 +1016,12 @@ void ICACHE_RAM_ATTR brzo_i2c_start_transaction_info(uint8_t slave_address, uint
 	}
 }
 
-void ICACHE_RAM_ATTR brzo_i2c_start_transaction(uint8_t slave_address, uint16_t SCL_frequency_KHz)
+void ICACHE_FLASH_ATTR brzo_i2c_start_transaction(uint8_t slave_address, uint16_t SCL_frequency_KHz)
 {
 	brzo_i2c_start_transaction_info(slave_address, SCL_frequency_KHz, &i2c_info);
 }
 
-uint8_t ICACHE_RAM_ATTR brzo_i2c_end_transaction_info(brzo_i2c_info *info)
+uint8_t ICACHE_FLASH_ATTR brzo_i2c_end_transaction_info(brzo_i2c_info *info)
 {
 	// returns 0 if transaction completed successfully or error code encoded as follows
 	// Bit 0 (1) : Bus not free
@@ -1038,7 +1038,7 @@ uint8_t ICACHE_RAM_ATTR brzo_i2c_end_transaction_info(brzo_i2c_info *info)
 	return dummy;
 }
 
-uint8_t ICACHE_RAM_ATTR brzo_i2c_end_transaction()
+uint8_t ICACHE_FLASH_ATTR brzo_i2c_end_transaction()
 {
 	uint8_t dummy;
 	
