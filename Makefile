@@ -14,7 +14,7 @@ app_image-0x00000.bin: app_image
 app_image: user_main.o pin_map.o brzo_i2c/brzo_i2c.o
 	$(CC) $(CFLAGS) $(LDFLAGS) $^ -o $@ $(LDLIBS)
 
-	# with latest chips need to specify dio for at least bootloader or csum err ensuesmak
+# with latest chips need to specify dio for at least bootloader or csum err ensuesmak
 flash: app_image-0x00000.bin
 	$(ESPTOOL) --baud 115200 write_flash -fm dio -ff 40m -fs 32m 0x3fc000 $(SDK_BASE)/sdk/bin/esp_init_data_default.bin
 	$(ESPTOOL) --baud 115200 write_flash -fm dio -ff 40m -fs 32m 0 app_image-0x00000.bin 0x10000 app_image-0x10000.bin
