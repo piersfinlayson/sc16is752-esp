@@ -112,7 +112,11 @@ bool ICACHE_FLASH_ATTR set_reg(uint8_t addr, char *name, uint8_t uart, uint8_t v
   areg = (reg << 3) | (uart << 2);
   ets_printf("  %s reg: 0x%02x actual reg: 0x%02x val: 0x%02x\r\n", name, reg, areg, val);
   rc = write_reg(addr, areg, val);
-  if (ver)
+  if (!rc)
+  {
+    fn_rc = FALSE;
+  }
+  else if (ver)
   {
     if (pause)
     {
